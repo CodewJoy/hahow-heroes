@@ -6,7 +6,9 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <h1>Welcome to Hero World</h1>
-        <Link href="/heroes">前往英雄列表</Link>
+        <Link href="/heroes">
+          <button className="app-button">前往英雄列表</button>
+        </Link>
       </main>
     </div>
   );

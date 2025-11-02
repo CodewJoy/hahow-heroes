@@ -1,5 +1,5 @@
 import HeroCard from "@/app/components/HeroCard";
-import { StyledHeroList } from "./styles";
+import { StyledHeroList } from "@/app/components/HeroList/styles";
 import type { Hero } from "@/types/hero";
 
 interface Props {

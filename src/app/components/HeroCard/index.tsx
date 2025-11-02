@@ -1,4 +1,5 @@
-import { Card, HeroImage } from "./styles";
+import Link from "next/link";
+import { StyledCard, StyledHeroImage } from "@/app/components/HeroCard/styles";
 import type { Hero } from "@/types/hero";
 
 interface Props {
@@ -8,10 +9,12 @@ interface Props {
 
 export const HeroCard: React.FC<Props> = ({ hero, isSelected }) => {
   return (
-    <Card $isSelected={isSelected}>
-      <HeroImage src={hero.image} alt={hero.name} />
-      <p>{hero.name}</p>
-    </Card>
+    <Link href={`/heroes/${hero.id}`}>
+      <StyledCard $isSelected={isSelected}>
+        <StyledHeroImage src={hero.image} alt={hero.name} />
+        <p>{hero.name}</p>
+      </StyledCard>
+    </Link>
   );
 };
 

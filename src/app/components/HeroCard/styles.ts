@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { HAHOW_COLOR } from "@/constant/index";
 
-export const Card = styled.div<{ $isSelected: boolean }>`
+export const StyledCard = styled.div<{ $isSelected: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +14,7 @@ export const Card = styled.div<{ $isSelected: boolean }>`
   background-color: ${({ $isSelected }) => ($isSelected ? "#e3f2fd" : "#fff")};
 
   border: 2px solid
-    ${({ $isSelected }) => ($isSelected ? "#2196f3" : "#e0e0e0")};
+    ${({ $isSelected }) => ($isSelected ? HAHOW_COLOR : "#e0e0e0")};
 
   &:hover {
     transform: translateY(-4px);
@@ -21,7 +22,7 @@ export const Card = styled.div<{ $isSelected: boolean }>`
   }
 `;
 
-export const HeroImage = styled.img`
+export const StyledHeroImage = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 50%;
