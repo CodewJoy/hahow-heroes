@@ -1,13 +1,16 @@
 import Link from "next/link";
+import { useHeroContext } from "@/app/context/HeroContext";
 import { StyledCard, StyledHeroImage } from "@/app/components/HeroCard/styles";
 import type { Hero } from "@/types/hero";
 
 interface Props {
   hero: Hero;
-  isSelected: boolean;
 }
 
-export const HeroCard: React.FC<Props> = ({ hero, isSelected }) => {
+export const HeroCard: React.FC<Props> = ({ hero }) => {
+  const { selectedHeroId } = useHeroContext();
+  const isSelected = hero.id === selectedHeroId;
+
   return (
     <Link href={`/heroes/${hero.id}`}>
       <StyledCard $isSelected={isSelected}>

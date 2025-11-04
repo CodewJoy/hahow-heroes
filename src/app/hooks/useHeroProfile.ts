@@ -27,8 +27,13 @@ export function useHeroProfile(heroId: string) {
 
   const saveProfile = useCallback(async () => {
     if (!profile) return;
-    await heroApi.updateHeroProfile(heroId, profile);
-    setOriginalProfile(profile);
+    try {
+      await heroApi.updateHeroProfile(heroId, profile);
+      setOriginalProfile(profile);
+    } catch (err) {
+      console.log(err);
+      setError(err instanceof Error ? err.message : "Failed to fetch hero");
+    }
   }, [heroId, profile]);
 
   useEffect(() => {

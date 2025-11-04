@@ -4,18 +4,13 @@ import type { Hero } from "@/types/hero";
 
 interface Props {
   heroes: Hero[];
-  selectedHeroId?: string;
 }
 
-export const HeroList: React.FC<Props> = ({ heroes, selectedHeroId }) => {
+export const HeroList: React.FC<Props> = ({ heroes }) => {
   return (
     <StyledHeroList>
       {heroes.map((hero) => (
-        <HeroCard
-          key={hero.id}
-          hero={hero}
-          isSelected={hero.id === selectedHeroId}
-        />
+        <HeroCard key={hero.id} hero={hero} />
       ))}
     </StyledHeroList>
   );

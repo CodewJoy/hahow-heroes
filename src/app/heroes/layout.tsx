@@ -1,5 +1,5 @@
 "use client";
-import { useParams } from "next/navigation";
+import { HeroContextProvider } from "@/app/context/HeroContext";
 import HeroList from "@/app/components/HeroList";
 import { useHeroes } from "@/app/hooks/useHeroes";
 import "./layout.css";
@@ -9,8 +9,6 @@ interface Props {
 }
 
 export default function HeroesLayout({ children }: Props) {
-  const params = useParams();
-  const heroId = params?.heroId as string | undefined;
   const { heroes, loading, error, refetch } = useHeroes();
 
   if (loading)
@@ -34,11 +32,13 @@ export default function HeroesLayout({ children }: Props) {
     );
 
   return (
-    <div className="heroes-layout">
-      <section className="hero-list">
-        <HeroList heroes={heroes} selectedHeroId={heroId} />
-      </section>
-      <section className="child">{children}</section>
-    </div>
+    <HeroContextProvider>
+      <div className="heroes-layout">
+        <section className="hero-list">
+          <HeroList heroes={heroes} />
+        </section>
+        <section className="child">{children}</section>
+      </div>
+    </HeroContextProvider>
   );
 }
