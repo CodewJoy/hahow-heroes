@@ -1,6 +1,6 @@
 .heroes-layout {
   display: flex;
-  flex-direction: column; /* 上下排列 */
+  flex-direction: column;
   align-items: center;
   min-height: 100vh;
   padding: 40px 20px;
