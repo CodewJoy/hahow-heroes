@@ -44,12 +44,18 @@ export default function HeroProfile() {
       <StyledLeftSide>
         {Object.entries(profile).map(([key, value]) => (
           <StyledAbility key={key}>
-            <StyledText> {key}</StyledText>
-            <Button onClick={() => handleAbilityChange(key as AbilityKey, 1)}>
+            <StyledText>{key}</StyledText>
+            <Button
+              onClick={() => handleAbilityChange(key as AbilityKey, 1)}
+              disabled={remainingPoints === 0} // Hero 能力值已滿
+            >
               +
             </Button>
             <StyledText>{value}</StyledText>
-            <Button onClick={() => handleAbilityChange(key as AbilityKey, -1)}>
+            <Button
+              onClick={() => handleAbilityChange(key as AbilityKey, -1)}
+              disabled={value === 0} // Hero 能力值不能小於零
+            >
               -
             </Button>
           </StyledAbility>
@@ -58,7 +64,9 @@ export default function HeroProfile() {
       <StyledRightSide>
         <StyledGrow />
         <span>剩餘點數: {remainingPoints}</span>
-        <Button onClick={saveProfile}>儲存</Button>
+        <Button onClick={saveProfile} disabled={remainingPoints !== 0}>
+          儲存
+        </Button>
       </StyledRightSide>
     </StyledProfile>
   );
