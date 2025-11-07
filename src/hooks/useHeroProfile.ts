@@ -31,7 +31,6 @@ export function useHeroProfile(heroId: string) {
       await heroApi.updateHeroProfile(heroId, profile);
       setOriginalProfile(profile);
     } catch (err) {
-      console.log(err);
       setError(err instanceof Error ? err.message : "Failed to fetch hero");
     }
   }, [heroId, profile]);
