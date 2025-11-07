@@ -48,7 +48,7 @@ src/
 | **React**             | 19.2.0 | 最新穩定版本                                                |
 | **styled-components** | 6.1.19 | CSS-in-JS 解決方案，雖進入 Maintenance mode，整體生態系穩定 |
 | **TypeScript**        | 5.9.3  | 提供靜態型別                                                |
-| **axios**             | 1.32.2 | 自動轉 JSON，設定 timeout，統一錯誤處理                     |
+| **axios**             | 1.13.2 | 最新穩定版。支援自動轉 JSON，設定 timeout，統一錯誤處理     |
 
 ### 寫註解的原則，遇到什麼狀況會寫註解
 
