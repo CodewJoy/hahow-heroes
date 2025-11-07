@@ -14,21 +14,21 @@ http://localhost:3000
 ### Environment
 
 - Node.js: 22.13.0
-- Package Manager: npm 11.0.0
+- Package Manager:
+  - npm 11.0.0
+  - yarn 1.22.22
 
 ### 專案的資料夾架構與設計理念
 
 ```
 src/
  ├─ app/                       # 使用 Next.js App Router 架構
- │   ├─ components/            # 可重用元件
- │   ├─ context/               # 狀態管理(React Context)
- │   ├─ fonts/                 # 字體資源
  │   ├─ heroes/                # Hero 頁面
- │   ├─ hooks/                 # 自訂 Hooks
  │   ├─ layout.tsx             # 全域版面設定
  │   └─ page.tsx               # 首頁
- │
+ ├─ components/                # 可重用元件
+ ├─ context/                   # 狀態管理(React Context)
+ ├─ hooks/                     # 自訂 Hooks
  ├─ constant/                  # 常數定義
  ├─ services/                  # API 服務層
  └─ types/                     # TypeScript 型別定義
