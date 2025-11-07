@@ -56,12 +56,14 @@ src/
 ### 遇到的問題與解決方法
 
 問題 1: 切換 Hero 連結時避免整個列表 re-render
-原因：最初將 heroId 由父層 props 傳入，導致 Router 切換時父層 props 改變，觸發整個 List 重繪。
-解法：改用 Context 儲存 heroId，子元件直接讀取選取狀態，避免 props 傳遞造成的 re-render。
+
+- 原因：最初將 heroId 由父層 props 傳入，導致 Router 切換時父層 props 改變，觸發整個 List 重繪。
+- 解法：改用 Context 儲存 heroId，子元件直接讀取選取狀態，避免 props 傳遞造成的 re-render。
 
 問題 2：圖片 Mixed Content 錯誤
-原因：後端圖片 URL 為 HTTP，造成 HTTPS 網頁有 Mixed Content 錯誤。
-解法：透過 Next.js Image Optimization 代理圖片，並於 next.config.mjs 設定允許來源網域，統一以 HTTPS 載入，避免混合內容問題。
+
+- 原因：後端圖片 URL 為 HTTP，造成 HTTPS 網頁有 Mixed Content 錯誤。
+- 解法：透過 Next.js Image Optimization 代理圖片，並於 next.config.mjs 設定允許來源網域，統一以 HTTPS 載入，避免混合內容問題。
 
 ### 加分項目
 
