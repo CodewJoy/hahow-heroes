@@ -1,6 +1,7 @@
 "use client";
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { usePathname } from "next/navigation";
+import { notFound } from "next/navigation";
 import {
   StyledProfile,
   StyledLeftSide,
@@ -36,7 +37,12 @@ export default function HeroProfile() {
   };
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  if (error) {
+    if (error.includes("404")) {
+      notFound();
+    }
+    return <p>{error}</p>;
+  }
   if (!profile) return null;
 
   return (
