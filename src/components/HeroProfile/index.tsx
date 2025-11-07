@@ -8,9 +8,9 @@ import {
   StyledAbility,
   StyledText,
   StyledGrow,
-} from "@/app/components/HeroProfile/styles";
-import { useHeroProfile } from "@/app/hooks/useHeroProfile";
-import Button from "@/app/components/Button";
+} from "@/components/HeroProfile/styles";
+import { useHeroProfile } from "@/hooks/useHeroProfile";
+import Button from "@/components/Button";
 import type { AbilityKey } from "@/types/hero";
 
 export default function HeroProfile() {

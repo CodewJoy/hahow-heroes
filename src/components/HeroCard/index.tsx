@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { useHeroContext } from "@/app/context/HeroContext";
-import { StyledCard, StyledHeroImage } from "@/app/components/HeroCard/styles";
+import { useHeroContext } from "@/context/HeroContext";
+import { StyledCard, StyledHeroImage } from "@/components/HeroCard/styles";
 import type { Hero } from "@/types/hero";
 
 interface Props {

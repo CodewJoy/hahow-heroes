@@ -1,7 +1,7 @@
 "use client";
-import { HeroContextProvider } from "@/app/context/HeroContext";
-import HeroList from "@/app/components/HeroList";
-import { useHeroes } from "@/app/hooks/useHeroes";
+import { HeroContextProvider } from "@/context/HeroContext";
+import HeroList from "@/components/HeroList";
+import { useHeroes } from "@/hooks/useHeroes";
 import "./layout.css";
 
 interface Props {

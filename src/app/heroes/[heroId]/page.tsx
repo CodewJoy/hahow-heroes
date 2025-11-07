@@ -1,4 +1,4 @@
-import HeroProfile from "@/app/components/HeroProfile";
+import HeroProfile from "@/components/HeroProfile";
 
 export default function HeroProfilePage() {
   return <HeroProfile />;

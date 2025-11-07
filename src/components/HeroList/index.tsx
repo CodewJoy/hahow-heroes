@@ -1,5 +1,5 @@
-import HeroCard from "@/app/components/HeroCard";
-import { StyledHeroList } from "@/app/components/HeroList/styles";
+import HeroCard from "@/components/HeroCard";
+import { StyledHeroList } from "@/components/HeroList/styles";
 import type { Hero } from "@/types/hero";
 
 interface Props {
@@ -7,6 +7,8 @@ interface Props {
 }
 
 export const HeroList: React.FC<Props> = ({ heroes }) => {
+  // test re-render
+  // console.log("heroes", heroes);
   return (
     <StyledHeroList>
       {heroes.map((hero) => (
