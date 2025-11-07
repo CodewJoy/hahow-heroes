@@ -6,7 +6,7 @@ export const StyledCard = styled.div<{ $isSelected: boolean }>`
   flex-direction: column;
   align-items: center;
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
   color: #333;
