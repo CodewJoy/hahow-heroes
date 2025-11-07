@@ -22,7 +22,7 @@ http://localhost:3000
 
 ### 專案的資料夾架構與設計理念
 
-- 採用 Client-based 架構，因頁面含與 user 互動邏輯，使用 CSR 比起 Server Component 簡潔。
+- 因頁面含與 user 互動邏輯所以採用 Client-based 架構
 - 資料抓取與狀態管理封裝於自定義 hooks，分離資料邏輯與 UI 呈現，提升可維護性。
 
 ```
