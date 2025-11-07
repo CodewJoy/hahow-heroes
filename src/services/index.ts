@@ -4,7 +4,7 @@ const API_BASE = "https://hahow-recruit.herokuapp.com";
 
 export const apiClient = axios.create({
   baseURL: API_BASE,
-  timeout: 10000,
+  timeout: 15000,
   headers: {
     "Content-Type": "application/json",
   },

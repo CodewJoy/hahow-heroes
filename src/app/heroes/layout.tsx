@@ -26,7 +26,9 @@ export default function HeroesLayout({ children }: Props) {
       <div className="heroes-layout">
         <section className="hero-list">
           <p>Failed to load heroes: {error}</p>
-          <button onClick={refetch}>Retry</button>
+          <button className="app-button" onClick={refetch}>
+            Retry
+          </button>
         </section>
       </div>
     );
