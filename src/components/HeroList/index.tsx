@@ -1,3 +1,4 @@
+"use client";
 import HeroCard from "@/components/HeroCard";
 import { StyledHeroList } from "@/components/HeroList/styles";
 import type { Hero } from "@/types/hero";

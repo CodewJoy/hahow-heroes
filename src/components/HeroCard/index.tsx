@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { useHeroContext } from "@/context/HeroContext";
 import { StyledCard } from "@/components/HeroCard/styles";

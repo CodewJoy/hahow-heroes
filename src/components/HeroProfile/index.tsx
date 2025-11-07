@@ -1,6 +1,5 @@
 "use client";
 import { useMemo } from "react";
-import { usePathname } from "next/navigation";
 import { notFound } from "next/navigation";
 import {
   StyledProfile,
@@ -14,9 +13,11 @@ import { useHeroProfile } from "@/hooks/useHeroProfile";
 import Button from "@/components/Button";
 import type { AbilityKey } from "@/types/hero";
 
-export default function HeroProfile() {
-  const pathname = usePathname();
-  const heroId = pathname.split("/")[2];
+interface Props {
+  heroId: string;
+}
+
+export default function HeroProfile({ heroId }: Props) {
   const { profile, originalProfile, setProfile, loading, error, saveProfile } =
     useHeroProfile(heroId);
 
