@@ -22,7 +22,7 @@ http://localhost:3000
 
 ### 專案的資料夾架構與設計理念
 
-- 因頁面包含使用者互動邏輯（如事件處理與狀態管理），這類功能僅能在 Client Component 執行。因此採用 Client-based 架構，減少 RSC/CSR 混用複雜度。。
+- 因頁面包含使用者互動邏輯（例如事件處理與狀態管理），這類功能僅能在 Client Component 執行。因此採用 Client-based 架構，減少 RSC/CSR 混用複雜度。
 - 資料抓取與狀態管理封裝於自定義 hooks，分離資料邏輯與 UI 呈現，提升可維護性。
 
 ```
