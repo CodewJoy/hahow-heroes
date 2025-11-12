@@ -1,37 +1,24 @@
-"use client";
+import { notFound } from "next/navigation";
 import { HeroContextProvider } from "@/context/HeroContext";
 import HeroList from "@/components/HeroList";
-import { useHeroes } from "@/hooks/useHeroes";
+import { heroApi } from "@/services/heroApi";
 import "./layout.css";
 
 interface Props {
   children: React.ReactNode;
 }
 
-export default function HeroesLayout({ children }: Props) {
-  const { heroes, loading, error, refetch } = useHeroes();
+export default async function HeroesLayout({ children }: Props) {
+  let heroes;
 
-  if (loading)
-    return (
-      <div className="heroes-layout">
-        <section className="hero-list">
-          {" "}
-          <p>Loading heroes...</p>
-        </section>
-      </div>
-    );
-
-  if (error)
-    return (
-      <div className="heroes-layout">
-        <section className="hero-list">
-          <p>Failed to load heroes: {error}</p>
-          <button className="app-button" onClick={refetch}>
-            Retry
-          </button>
-        </section>
-      </div>
-    );
+  try {
+    heroes = await heroApi.getHeroes();
+  } catch (err: any) {
+    if (err.response?.status === 404) {
+      notFound();
+    }
+    throw err;
+  }
 
   return (
     <HeroContextProvider>

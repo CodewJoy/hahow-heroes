@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./page.module.css";
+import Button from "@/components/Button";
 
 export default function Home() {
   return (
@@ -7,7 +8,7 @@ export default function Home() {
       <main className={styles.main}>
         <h1>Welcome to Hero World</h1>
         <Link href="/heroes">
-          <button className="app-button">前往英雄列表</button>
+          <Button>前往英雄列表</Button>
         </Link>
       </main>
     </div>

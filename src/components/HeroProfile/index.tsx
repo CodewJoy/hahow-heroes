@@ -1,5 +1,5 @@
 "use client";
-import { useMemo } from "react";
+import { useState, useMemo } from "react";
 import { notFound } from "next/navigation";
 import {
   StyledProfile,
@@ -9,17 +9,40 @@ import {
   StyledText,
   StyledGrow,
 } from "@/components/HeroProfile/styles";
-import { useHeroProfile } from "@/hooks/useHeroProfile";
 import Button from "@/components/Button";
-import type { AbilityKey } from "@/types/hero";
+import { heroApi } from "@/services/heroApi";
+import type { AbilityKey, HeroProfile } from "@/types/hero";
 
-interface Props {
+interface HeroProfileProps {
   heroId: string;
+  initialProfile: HeroProfile;
 }
 
-export default function HeroProfile({ heroId }: Props) {
-  const { profile, originalProfile, setProfile, loading, error, saveProfile } =
-    useHeroProfile(heroId);
+export default function HeroProfile({
+  heroId,
+  initialProfile,
+}: HeroProfileProps) {
+  const [profile, setProfile] = useState<HeroProfile>(initialProfile);
+  const [originalProfile, setOriginalProfile] =
+    useState<HeroProfile>(initialProfile);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const saveProfile = async () => {
+    try {
+      setLoading(true);
+      await heroApi.updateHeroProfile(heroId, profile);
+      setOriginalProfile(profile);
+      setError(null);
+    } catch (err: any) {
+      if (err.response?.status === 404) {
+        notFound();
+      }
+      setError("儲存失敗，請稍後再試。");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const remainingPoints = useMemo(() => {
     if (!profile || !originalProfile) return 0;
@@ -37,15 +60,7 @@ export default function HeroProfile({ heroId }: Props) {
     });
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) {
-    if (error.includes("404")) {
-      notFound();
-    }
-    return <p>{error}</p>;
-  }
-  if (!profile) return null;
-
+  if (error) return <p>發生錯誤：{error}</p>;
   return (
     <StyledProfile>
       <StyledLeftSide>
@@ -71,8 +86,11 @@ export default function HeroProfile({ heroId }: Props) {
       <StyledRightSide>
         <StyledGrow />
         <span>剩餘點數: {remainingPoints}</span>
-        <Button onClick={saveProfile} disabled={remainingPoints !== 0}>
-          儲存
+        <Button
+          onClick={saveProfile}
+          disabled={remainingPoints !== 0 || loading}
+        >
+          {loading ? "儲存中..." : "儲存變更"}
         </Button>
       </StyledRightSide>
     </StyledProfile>

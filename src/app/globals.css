@@ -47,29 +47,3 @@ a {
   flex-direction: column;
   align-items: center;
 }
-
-.app-button {
-  padding: 8px 12px;
-  margin: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  color: var(--hahow-color);
-  background-color: white;
-  border: 1px solid var(--hahow-color);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.app-button:hover {
-  background-color: var(--hahow-color);
-  color: white;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 6px rgba(30, 159, 210, 0.3);
-}
-
-.app-button:active {
-  transform: translateY(0);
-  box-shadow: 0 1px 3px rgba(30, 159, 210, 0.2);
-}

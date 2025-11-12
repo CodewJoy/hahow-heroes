@@ -22,18 +22,21 @@ http://localhost:3000
 
 ### 專案的資料夾架構與設計理念
 
-- 因頁面包含使用者互動邏輯（例如事件處理與狀態管理），這類功能僅能在 Client Component 執行。因此採用 Client-based 架構，減少 RSC/CSR 混用複雜度。
-- 資料抓取與狀態管理封裝於自定義 hooks，分離資料邏輯與 UI 呈現，提升可維護性。
+- 打 API 邏輯放在 Server Component：
+  由伺服端先行取得資料，能更快顯示有意義的內容，但總載入時間可能更長。另外可降低 JS bundle 體積，並集中錯誤處理（透過 notFound() 與全域 error.tsx）。
+
+- heroes 頁面包含使用者互動邏輯（例如事件處理與狀態管理）：
+  因此該部分採用 Client Component，以支援動態互動與 Context 狀態共享。
 
 ```
 src/
  ├─ app/                       # 使用 Next.js App Router 架構
  │   ├─ heroes/                # Hero 頁面
- │   ├─ layout.tsx             # 全域版面設定
+ │   ├─ layout.tsx             # 全域版面配置，含 styled-components Registry (避免 SSR 閃爍)
  │   └─ page.tsx               # 首頁
  ├─ components/                # 可重用元件
- ├─ context/                   # 狀態管理(React Context)
- ├─ hooks/                     # 自訂 Hooks
+ ├─ context/                   # 全域狀態管理 (React Context, 僅在 Client Side 使用)
+ ├─ lib/                       # 工具函式或框架整合，如 styled-components registry
  ├─ constant/                  # 常數定義
  ├─ services/                  # API 服務層
  └─ types/                     # TypeScript 型別定義
@@ -70,4 +73,4 @@ src/
 ### 加分項目
 
 - 使用 CSS-in-JS library: styled-components
-- 使用 claude.ai 和 ChatGPT 輔助開發，debug 與 程式優化
+- 使用 claude.ai 和 ChatGPT 產 boilerplate，debug 與 程式優化
